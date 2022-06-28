@@ -8,60 +8,47 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-class ViewPagerAdapter extends PagerAdapter {
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
+//    private final List<Fragment> mFragmentList = new ArrayList<>(); // this line can cause crashes
 
-    // Context object
-    Context context;
+    public ViewPagerAdapter(FragmentManager manager, int behavior) {
 
-    // Array of images
-    int[] images;
+        super(manager,behavior);
+    }
+    @Override
+    public Fragment getItem(int position) {
 
-    // Layout Inflater
-    LayoutInflater mLayoutInflater;
-
-
-    // Viewpager Constructor
-    public ViewPagerAdapter(Context context, int[] images) {
-        this.context = context;
-        this.images = images;
-        mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        switch (position) {
+            case 0:
+                return new FirstFragment();
+            case 1:
+                return new SecondFragment();
+            case 2:
+                return new ThirdFragment();
+            case 3:
+                return new FourthFragment();
+            default:
+                return new FirstFragment();
+        }
     }
 
     @Override
     public int getCount() {
-        // return the number of images
-        return images.length;
+
+        return 4;
     }
 
-    @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view == ((LinearLayout) object);
-    }
-
-    @NonNull
-    @Override
-    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
-        // inflating the item.xml
-        View itemView = mLayoutInflater.inflate(R.layout.item, container, false);
-
-        // referencing the image view from the item.xml file
-        ImageView imageView = (ImageView) itemView.findViewById(R.id.imageViewMain);
-
-        // setting the image in the imageView
-        imageView.setImageResource(images[position]);
-
-        // Adding the View
-        Objects.requireNonNull(container).addView(itemView);
-
-        return itemView;
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-
-        container.removeView((LinearLayout) object);
-    }
+//    public void addFragment(Fragment fragment) {
+//        mFragmentList.add(fragment);  // this line can cause crashes
+//    }
 }
