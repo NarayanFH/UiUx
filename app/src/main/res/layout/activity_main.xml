@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/flFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+    </FrameLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:gravity="center_horizontal|center_vertical"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".MainActivity"-->
+<!--    android:id="@+id/main_flow"-->
+<!--    >-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:minWidth="50dp"-->
+<!--        android:minHeight="50dp"-->
+<!--        app:srcCompat="@drawable/ic_person" />-->
+
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="50dp"-->
+
+<!--        android:drawableStart="@drawable/ic_person"-->
+<!--        android:drawableRight="@drawable/ic_person" />-->
+
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="50dp"-->
+
+<!--        android:drawableStart="@drawable/ic_security" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/login"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="50dp"-->
+<!--        android:backgroundTint="#F80303"-->
+<!--        android:text="LOG IN" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="sans-serif-black"-->
+<!--        android:text="Already have an account?"-->
+<!--        android:textColor="@color/black" />-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="313dp"-->
+<!--        android:layout_height="37dp"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:layout_marginHorizontal="50dp"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        android:backgroundTint="@color/grey">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="41dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_gravity="center|center_horizontal"-->
+<!--            android:background="@color/grey"-->
+<!--            android:maxWidth="20dp"-->
+<!--            android:src="@drawable/fb" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/grey"-->
+<!--            android:fontFamily="sans-serif-black"-->
+<!--            android:gravity="center"-->
+<!--            android:padding="10dp"-->
+<!--            android:text="LOG IN WITH FACEBOOK" />-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+
+<!--        android:layout_width="313dp"-->
+<!--        android:layout_height="37dp"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:layout_marginHorizontal="50dp"-->
+<!--        android:backgroundTint="@color/grey"-->
+<!--        >-->
+
+<!--        <ImageView-->
+
+<!--            android:layout_width="37dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/grey"-->
+<!--            android:maxWidth="20dp"-->
+<!--            android:src="@drawable/twitter" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/grey"-->
+<!--            android:fontFamily="sans-serif-black"-->
+<!--            android:gravity="center|center_horizontal"-->
+<!--            android:padding="10dp"-->
+<!--            android:text="LOG IN WITH TWITTER" />-->
+<!--    </LinearLayout>-->
+
+
+<!--    &lt;!&ndash;    <Button&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_marginHorizontal="50dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_marginTop="60dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:backgroundTint="#9A9696"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:text="LOG IN WITH FACEBOOK"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:textSize="10dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:icon="@drawable/fb"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:iconGravity="textStart"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:iconPadding="10dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:iconSize="20dp" />&ndash;&gt;-->
+
+
+<!--    &lt;!&ndash;    <Button&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_marginHorizontal="50dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:backgroundTint="#9A9696"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:text="LOG IN with twitter"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:textSize="10dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:icon="@drawable/twitter"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:iconGravity="textStart"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:iconPadding="10dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:iconSize="20dp" />&ndash;&gt;-->
+
+
+
+
+
+
+<!--</LinearLayout>-->

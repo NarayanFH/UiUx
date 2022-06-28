@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment">
+
+
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerMain"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/red"
+        />
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search Here"
+        android:iconifiedByDefault="false"
+        android:background="@color/white"
+        android:layout_alignParentTop="true"
+        />
+
+    <LinearLayout
+        android:id="@+id/l_c"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewPagerMain"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="15dp"
+
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:src="@drawable/ic_baseline_home_24" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="15dp"
+
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:src="@drawable/ic_baseline_playlist_add_24" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="15dp"
+
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:src="@drawable/ic_baseline_person_24" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="15dp"
+
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:src="@drawable/ic_baseline_library_add_24" />
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/l_c">
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:foreground="@color/grey"/>
+
+    </LinearLayout>
+
+
+
+    <!--    <TextView-->
+<!--        android:id="@+id/firstFragment"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Page1"-->
+<!--        android:textColor="#43a047"-->
+<!--        android:textSize="40sp"-->
+<!--        android:textStyle="italic|bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+</RelativeLayout>
