@@ -2,15 +2,39 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPagerMain"
+
+
+    <com.smarteist.autoimageslider.SliderView
+        android:id="@+id/slider"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/red" />
+        android:layout_height="250dp"
+
+        app:sliderAnimationDuration="600"
+        app:sliderAutoCycleDirection="back_and_forth"
+        app:sliderIndicatorAnimationDuration="600"
+        app:sliderIndicatorEnabled="true"
+
+        app:sliderIndicatorMargin="35dp"
+        app:sliderIndicatorOrientation="horizontal"
+        app:sliderIndicatorPadding="3dp"
+        app:sliderIndicatorRadius="2dp"
+        app:sliderIndicatorSelectedColor="#5A5A5A"
+        app:sliderIndicatorUnselectedColor="#FFF"
+        app:sliderScrollTimeInSec="1" />
+
+<!--    <com.synnapps.carouselview.CarouselView-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:id="@+id/carouselView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="150dp"-->
+<!--        />-->
+
+
 
     <SearchView
         android:id="@+id/searchView"
@@ -26,18 +50,25 @@
         android:id="@+id/l_c"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/viewPagerMain"
+        android:layout_below="@+id/slider"
+        android:weightSum="1"
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
 
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="15dp"
+
+android:layout_weight="0.25"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+
+
 
             >
 
             <ImageView
+                android:id="@+id/c1"
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
@@ -45,11 +76,16 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="15dp">
+
+            android:layout_weight="0.25"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            >
 
             <ImageView
+                android:id="@+id/c2"
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
@@ -58,13 +94,17 @@
 
         <androidx.cardview.widget.CardView
 
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="15dp"
+            android:layout_weight="0.25"
+
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
 
             >
 
             <ImageView
+                android:id="@+id/c3"
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
@@ -73,13 +113,16 @@
 
         <androidx.cardview.widget.CardView
 
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="15dp"
+            android:layout_weight="0.25"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
 
             >
 
             <ImageView
+                android:id="@+id/c4"
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
@@ -94,14 +137,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/l_c"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="3dp"
         android:layout_marginBottom="10dp">
 
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/div"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="5dp"
             android:foreground="@color/grey" />
 
@@ -115,10 +158,10 @@
         android:layout_below="@id/l_c"
 android:textSize="20dp"
 
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="2dp"
         android:fontFamily="sans-serif-black"
         android:text="List add"
         android:textStyle="bold"></TextView>

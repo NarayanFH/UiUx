@@ -4,6 +4,9 @@
     package="com.example.ui_tasks">
 
     <uses-permission android:name = "android.permission.INTERNET"/>
+
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -21,8 +24,17 @@
 <!--            android:name=".CustomAdapter"-->
 <!--            android:exported="false" />-->
         <activity
+            android:name=".ThirdFragment"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.ProfileTheme"
+            tools:ignore="Instantiatable">
+        </activity>
+        <activity
             android:name=".MainActivity"
-            android:exported="false" />
+
+            android:exported="false"
+
+            />
         <activity
             android:name=".SplashScreen"
             android:exported="true">

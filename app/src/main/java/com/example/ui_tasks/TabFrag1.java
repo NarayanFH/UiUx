@@ -3,62 +3,50 @@ package com.example.ui_tasks;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TabFrag1#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class TabFrag1 extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public TabFrag1() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TabFrag1.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TabFrag1 newInstance(String param1, String param2) {
-        TabFrag1 fragment = new TabFrag1();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab_frag1, container, false);
+        View view= inflater.inflate(R.layout.fragment_tab_frag1, container, false);
+
+
+        Tab1RecV[] myListData = new Tab1RecV[] {
+                new  Tab1RecV("Data1","Text1","Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ","Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry", android.R.drawable.ic_dialog_email,android.R.drawable.ic_dialog_alert),
+                new  Tab1RecV("Data2","Text2","Lorem Ipsum is simply dummy text of the printing and typesetting industry.","Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ", android.R.drawable.ic_dialog_email,android.R.drawable.ic_dialog_dialer),
+                new  Tab1RecV("Data3","Text3","Lorem Ipsum is simply dummy text of the printing and typesetting industry.","Lorem Ipsum is simply dummy text of the printing and typesetting industry.", android.R.drawable.ic_dialog_email,android.R.drawable.ic_dialog_email),
+                new  Tab1RecV("Data4","Text4","Lorem Ipsum is simply dummy text of the printing and typesetting industry.","Lorem Ipsum is simply dummy text of the printing and typesetting industry.", android.R.drawable.ic_dialog_info,android.R.drawable.ic_dialog_email),
+                new  Tab1RecV("Email","Email","Lorem Ipsum is simply dummy text of the printing and typesetting industry.","Lorem Ipsum is simply dummy text of the printing and typesetting industry.", android.R.drawable.ic_dialog_map,android.R.drawable.ic_dialog_email),
+                new  Tab1RecV("Email","Email","Email","Email", android.R.drawable.ic_dialog_email,android.R.drawable.ic_dialog_email),
+                new  Tab1RecV("Email","Email","Email","Email", android.R.drawable.ic_dialog_email,android.R.drawable.ic_dialog_email),
+                new  Tab1RecV("Email","Email","Email","Email", android.R.drawable.ic_dialog_email,android.R.drawable.ic_dialog_email),
+//                new Tab1RecV("Info", android.R.drawable.ic_dialog_info),
+//                new Tab1RecV("Delete", android.R.drawable.ic_delete),
+//                new Tab1RecV("Dialer", android.R.drawable.ic_dialog_dialer),
+//                new Tab1RecV("Alert", android.R.drawable.ic_dialog_alert),
+//                new Tab1RecV("Map", android.R.drawable.ic_dialog_map),
+//                new Tab1RecV("Email", android.R.drawable.ic_dialog_email),
+//                new Tab1RecV("Info", android.R.drawable.ic_dialog_info),
+//                new Tab1RecV("Delete", android.R.drawable.ic_delete),
+//                new Tab1RecV("Dialer", android.R.drawable.ic_dialog_dialer),
+//                new Tab1RecV("Alert", android.R.drawable.ic_dialog_alert),
+//                new Tab1RecV("Map", android.R.drawable.ic_dialog_map),
+        };
+
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        MyListAdapter adapter = new MyListAdapter(myListData);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        recyclerView.setAdapter(adapter);
+        return view;
     }
 }
