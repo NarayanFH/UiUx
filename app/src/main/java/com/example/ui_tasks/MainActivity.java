@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.ui.NavigationUI;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
@@ -24,15 +25,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawer;
     private Toolbar toolbar;
     private NavigationView nvDrawer;
-
-
-
+    Fragment fragment;
+    int position;
     // Make sure to be using androidx.appcompat.app.ActionBarDrawerToggle version.
 
     private ActionBarDrawerToggle drawerToggle;
@@ -40,41 +39,53 @@ public class MainActivity extends AppCompatActivity{
     private BottomNavigationView mNavigationView;
     private ViewPager mViewPager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        getSupportActionBar().hide();
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.hamburg);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        nvDrawer = (NavigationView) findViewById(R.id.nvView);
-
-
+        nvDrawer =  findViewById(R.id.nvView);
         // Setup drawer view
-
         setupDrawerContent(nvDrawer);
 
-//        binding = ActivityMainBinding.inflate(getLayoutInflater());
-//        setContentView(binding.getRoot());
-//        replaceFragment(new FirstFragment());
         mNavigationView = findViewById(R.id.bottomNavigationView);
         mViewPager = findViewById(R.id.viewpager);
-
         setUpViewPager();
-
+        FragmentManager fragmentManager = getSupportFragmentManager();
         mNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.home:
                     mViewPager.setCurrentItem(0);
+
+
+                    fragmentManager.beginTransaction().replace(R.id.flContent, new FirstFragment()).commit();
+
+                    position = 0;
+
                     break;
                 case R.id.profile:
+
+                    fragmentManager.beginTransaction().replace(R.id.flContent, new SecondFragment()).commit();
                     mViewPager.setCurrentItem(1);
+                    fragment = new SecondFragment();
+                    position = 1;
                     break;
                 case R.id.list:
+                    fragmentManager.beginTransaction().replace(R.id.flContent, new ThirdFragment()).commit();
                     mViewPager.setCurrentItem(2);
+                    fragment = new ThirdFragment();
+                    position = 2;
                     break;
                 case R.id.upload:
+                    fragmentManager.beginTransaction().replace(R.id.flContent, new FourthFragment()).commit();
                     mViewPager.setCurrentItem(3);
+                    fragment = new FourthFragment();
+                    position = 3;
                     break;
             }
             return true;
@@ -82,102 +93,11 @@ public class MainActivity extends AppCompatActivity{
 
 
 
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-////        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-////        fab.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View view) {
-////                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-////                        .setAction("Action", null).show();
-////            }
-////        });
-//
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
-//
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
-//        navigationView.setCheckedItem(R.id.nav_home);
-//
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FirstFragment fragment = new FirstFragment();
-//        fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commit();
-//    }
-//
-//    @Override
-//    public void onBackPressed() {
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-//
-//    @SuppressWarnings("StatementWithEmptyBody")
-//    @Override
-//    public boolean onNavigationItemSelected(MenuItem item) {
-//        // Handle navigation view item clicks here.
-//        int id = item.getItemId();
-//
-//        Fragment fragment = null;
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//
-//        if (id == R.id.nav_home) {
-//            fragment = new FirstFragment();
-//        } else if (id == R.id.nav_profile) {
-//            fragment = new SecondFragment();
-//        } else if (id == R.id.list) {
-//            fragment = new ThirdFragment();
-//        } else if (id == R.id.upload) {
-//            fragment = new FourthFragment();
-//        } else if (id == R.id.email) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
-//        fragmentManager.beginTransaction().replace(R.id.frameLayout, fragment).commit();
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        drawer.closeDrawer(GravityCompat.START);
-//        return true;
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-
 //        setSupportActionBar(toolbar);
-
-        // This will display an Up icon (<-), we will replace it with hamburger later
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Find our drawer view
-
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
@@ -186,55 +106,46 @@ public class MainActivity extends AppCompatActivity{
 
 
     private void setupDrawerContent(NavigationView navigationView) {
-
         navigationView.setNavigationItemSelectedListener(
-
                 new NavigationView.OnNavigationItemSelectedListener() {
-
                     @Override
-
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
-
                         selectDrawerItem(menuItem);
-
                         return true;
-
                     }
-
                 });
 
     }
 
-
     public void selectDrawerItem(MenuItem menuItem) {
 
         // Create a new fragment and specify the fragment to show based on nav item clicked
-
-        Fragment fragment = null;
-
+//        Fragment fragment = null;
         Class fragmentClass;
-
         switch(menuItem.getItemId()) {
-
             case R.id.nav_first_fragment:
-
+position=0;
+                mViewPager.setCurrentItem(0);
                 fragmentClass = FirstFragment.class;
 
                 break;
 
             case R.id.nav_second_fragment:
-
+                position=1;
+                mViewPager.setCurrentItem(1);
                 fragmentClass = SecondFragment.class;
 
                 break;
 
             case R.id.nav_third_fragment:
-
+                mViewPager.setCurrentItem(2);
+position=2;
                 fragmentClass = ThirdFragment.class;
 
                 break;
             case R.id.nav_fourth_fragment:_fragment:
-
+position=3;
+                mViewPager.setCurrentItem(3);
                 fragmentClass = FourthFragment.class;
 
                 break;
@@ -249,7 +160,7 @@ public class MainActivity extends AppCompatActivity{
 
         try {
 
-            fragment = (Fragment) fragmentClass.newInstance();
+//            fragment = (Fragment) fragmentClass.newInstance();
 
         } catch (Exception e) {
 
@@ -262,6 +173,23 @@ public class MainActivity extends AppCompatActivity{
         // Insert the fragment by replacing any existing fragment
 
         FragmentManager fragmentManager = getSupportFragmentManager();
+
+//        if(position == 0) {
+//            fragment = new FirstFragment();
+//            mViewPager.setCurrentItem(0);
+//        } else if (position ==1) {
+//            fragment = new SecondFragment();
+//            mViewPager.setCurrentItem(1);
+//        }
+//        else if (position ==2) {
+//            fragment = new ThirdFragment();
+//            mViewPager.setCurrentItem(2);
+//        }
+//        else if (position ==3) {
+//            fragment = new FourthFragment();
+//            mViewPager.setCurrentItem(3);
+//        }
+
 
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
@@ -290,15 +218,10 @@ public class MainActivity extends AppCompatActivity{
     @Override
 
     public boolean onOptionsItemSelected(MenuItem item) {
-
         // The action bar home/up action should open or close the drawer.
-
         switch (item.getItemId()) {
-
             case android.R.id.home:
-
                 mDrawer.openDrawer(GravityCompat.START);
-
                 return true;
 
         }
@@ -308,15 +231,16 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    private void replaceFragment(Fragment fragment) {
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.flFragment, fragment);
-        fragmentTransaction.commit();
-    }
+//    private void replaceFragment(Fragment fragment) {
+//
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.flFragment, fragment);
+//        fragmentTransaction.commit();
+//    }
 
     private void setUpViewPager() {
+
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mViewPager.setAdapter(viewPagerAdapter);
 
@@ -331,6 +255,8 @@ public class MainActivity extends AppCompatActivity{
                 switch (position) {
                     case 0:
                         mNavigationView.getMenu().findItem(R.id.home).setChecked(true);
+
+
                         break;
                     case 1:
                         mNavigationView.getMenu().findItem(R.id.profile).setChecked(true);
@@ -357,26 +283,3 @@ public class MainActivity extends AppCompatActivity{
 
 
 
-//    Button login;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//
-//        login = findViewById(R.id.login);
-//
-//        login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-////                Fragment fragment = new Fragment();
-////                FragmentManager fragmentManager = getSupportFragmentManager();
-////                fragmentManager.beginTransaction().replace(R.id.main_flow, fragment).commit();
-//
-//                Intent i =  new Intent(MainActivity.this,FirstScreen.class);
-//                startActivity(i);
-////                finish();
-//            }
-//        });
-//    }

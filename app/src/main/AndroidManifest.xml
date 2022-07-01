@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ui_tasks">
 
-    <uses-permission android:name = "android.permission.INTERNET"/>
-
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,24 +16,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UI_Tasks"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".SubjectData"-->
-<!--            android:exported="false" />-->
-<!--        <activity-->
-<!--            android:name=".CustomAdapter"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".NavDraw"
+            android:exported="false"
+            android:label="@string/title_activity_nav_draw"
+            android:theme="@style/Theme.UI_Tasks.NoActionBar" />
+        <!-- <activity -->
+        <!-- android:name=".SubjectData" -->
+        <!-- android:exported="false" /> -->
+        <!-- <activity -->
+        <!-- android:name=".CustomAdapter" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".ThirdFragment"
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.ProfileTheme"
-            tools:ignore="Instantiatable">
-        </activity>
+            tools:ignore="Instantiatable"></activity>
         <activity
             android:name=".MainActivity"
-
-            android:exported="false"
-
-            />
+            android:exported="false" />
         <activity
             android:name=".SplashScreen"
             android:exported="true">
